@@ -1,0 +1,65 @@
+﻿@model IEnumerable<NovallanPortali.Models.Ilan>
+
+@{
+    ViewData["Title"] = "İlan Listesi";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>İlan Vitrini</h1>
+        <p>
+            <a asp-action="Create" class="btn btn-primary">Yeni İlan Ekle</a>
+        </p>
+    </div>
+
+    <table class="table table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Görsel</th>
+                <th>@Html.DisplayNameFor(model => model.Baslik)</th>
+                <th>@Html.DisplayNameFor(model => model.Fiyat)</th>
+                <th>Şehir/İlçe</th>
+                <th>@Html.DisplayNameFor(model => model.Kategori)</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="vertical-align: middle;">
+                        @if (!string.IsNullOrEmpty(item.ResimYolu))
+                        {
+                            <img src="@item.ResimYolu" style="width:100px; height:70px; object-fit:cover; border-radius:8px; border:1px solid #ddd;" alt="Resim" />
+                        }
+                        else
+                        {
+                            <div style="width:100px; height:70px; background:#f8f9fa; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; color:#666; border:1px solid #ddd;">
+                                Resim Yok
+                            </div>
+                        }
+                    </td>
+                    <td style="vertical-align: middle; font-weight:bold;">
+                        @Html.DisplayFor(modelItem => item.Baslik)
+                    </td>
+                    <td style="vertical-align: middle; color: green; font-weight:bold;">
+                        @item.Fiyat.ToString("C2")
+                    </td>
+                    <td style="vertical-align: middle;">
+                        @item.Sehir / @item.Ilce
+                    </td>
+                    <td style="vertical-align: middle;">
+                        <span class="badge bg-info text-dark">@Html.DisplayFor(modelItem => item.Kategori.Ad)</span>
+                    </td>
+                    <td style="vertical-align: middle;">
+                        <div class="btn-group btn-group-sm">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning">Düzenle</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info">Detay</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Sil</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

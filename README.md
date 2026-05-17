@@ -9,7 +9,7 @@ Bu proje, ASP.NET Core MVC kullanılarak geliştirilmiş bir ilan satış/kirala
 
 ### 📸 Proje Görünümü:
 *(Hocam, sitenin ekran görüntülerini bu kısma ekledim.)*
-Ekran görüntüsü 2026-05-10 221104.png
+
 
 ---
 **Geliştirici:** Fatma Nur Ünlütürk  
